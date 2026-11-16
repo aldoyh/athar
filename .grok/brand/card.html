@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style>
+  @font-face {
+    font-family: "Fraunces";
+    font-weight: 500;
+    font-style: normal;
+    src: url("../brand-fonts/Fraunces-500.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "Fraunces";
+    font-weight: 600;
+    font-style: normal;
+    src: url("../brand-fonts/Fraunces-600.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "Tajawal";
+    font-weight: 500;
+    font-style: normal;
+    src: url("../brand-fonts/Tajawal-500.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "Tajawal";
+    font-weight: 700;
+    font-style: normal;
+    src: url("../brand-fonts/Tajawal-700.ttf") format("truetype");
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #101614; }
+
+  .frame {
+    position: relative;
+    overflow: hidden;
+    background: #101614;
+    color: #101614;
+  }
+  .og { width: 1200px; height: 630px; }
+  .banner { width: 1200px; height: 264px; margin-top: 24px; }
+
+  .night, .glow, .horizon, .lacquer, .vignette, .grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .night {
+    background:
+      radial-gradient(ellipse 80% 70% at 42% 46%, #1a2420 0%, #141c19 46%, #101614 78%);
+  }
+  .glow {
+    background:
+      radial-gradient(ellipse 42% 55% at 34% 38%, rgba(243, 238, 230, 0.10), transparent 70%),
+      radial-gradient(ellipse 28% 40% at 68% 70%, rgba(26, 36, 32, 0.0), transparent 70%);
+  }
+  .horizon {
+    background: linear-gradient(180deg, transparent 58%, rgba(16, 22, 20, 0.2) 68%, #0c110f 100%);
+  }
+  .vignette {
+    background: radial-gradient(ellipse 78% 74% at 50% 48%, transparent 40%, rgba(8, 12, 10, 0.72) 100%);
+  }
+  .grain {
+    background: url("grain.png");
+    background-size: 380px 380px;
+    opacity: 0.16;
+    mix-blend-mode: overlay;
+  }
+
+  .stage {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+  }
+  .banner .stage {
+    place-items: start start;
+    padding-left: 64px;
+    padding-top: 18px;
+  }
+
+  .rig {
+    position: relative;
+    transform-style: preserve-3d;
+  }
+  .og .rig {
+    width: 820px;
+    height: 470px;
+    transform: perspective(1400px) rotateX(8deg) rotateY(-16deg) translateY(6px);
+  }
+  .banner .rig {
+    width: 400px;
+    height: 188px;
+    transform: perspective(1100px) rotateX(7deg) rotateY(-18deg);
+  }
+
+  .shadow {
+    position: absolute;
+    left: 8%;
+    right: 6%;
+    bottom: -28px;
+    height: 46px;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.62), transparent 70%);
+    filter: blur(6px);
+    transform: translateZ(-20px);
+  }
+  .banner .shadow { bottom: -16px; height: 28px; }
+
+  .card {
+    position: absolute;
+    inset: 0;
+    border-radius: 28px;
+    transform-style: preserve-3d;
+    background:
+      linear-gradient(118deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.05) 28%, transparent 42%),
+      repeating-linear-gradient(
+        102deg,
+        rgba(16, 22, 20, 0.00) 0 2px,
+        rgba(16, 22, 20, 0.045) 2px 3px
+      ),
+      linear-gradient(165deg, #f7f3eb 0%, #f3eee6 38%, #e4dcd0 72%, #f3eee6 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      inset 0 -18px 30px rgba(16, 22, 20, 0.06);
+    overflow: hidden;
+  }
+  .banner .card { border-radius: 16px; }
+
+  /* Machined brass edge, the single brass accent, catching a vertical specular. */
+  .card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 16px;
+    background:
+      linear-gradient(
+        180deg,
+        #f6ead0 0%,
+        #c6a15b 8%,
+        #7a5e2c 22%,
+        #f0e2b4 38%,
+        #c6a15b 48%,
+        #5e461c 62%,
+        #e7d39a 74%,
+        #c6a15b 88%,
+        #8a6a34 100%
+      );
+    box-shadow:
+      inset -3px 0 3px rgba(16, 22, 20, 0.35),
+      inset 2px 0 2px rgba(255, 255, 255, 0.55);
+  }
+  .banner .card::before { width: 10px; }
+
+  .face {
+    position: absolute;
+    inset: 0 0 0 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 48px 56px 46px 48px;
+  }
+  .banner .face {
+    inset: 0 0 0 10px;
+    padding: 22px 22px 20px 22px;
+  }
+
+  .wordmark {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+  }
+  .banner .wordmark { gap: 10px; }
+
+  .en {
+    font-family: "Fraunces", "Times New Roman", serif;
+    font-weight: 500;
+    font-size: 64px;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: #101614;
+  }
+  .banner .en { font-size: 36px; }
+
+  .ar {
+    font-family: "Tajawal", sans-serif;
+    font-weight: 500;
+    font-size: 52px;
+    line-height: 1;
+    color: #101614;
+  }
+  .banner .ar { font-size: 30px; }
+
+  .balance {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+  .banner .balance { gap: 8px; }
+
+  .num {
+    font-family: "Fraunces", "Times New Roman", serif;
+    font-weight: 500;
+    font-size: 84px;
+    letter-spacing: -0.035em;
+    line-height: 0.9;
+    font-variant-numeric: lining-nums tabular-nums;
+    color: #101614;
+  }
+  .banner .num { font-size: 34px; letter-spacing: -0.03em; }
+
+  .ccy {
+    font-family: "Fraunces", "Times New Roman", serif;
+    font-weight: 600;
+    font-size: 28px;
+    letter-spacing: 0.16em;
+    color: #9c9488;
+    transform: translateY(-6px);
+  }
+  .banner .ccy {
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    transform: translateY(-2px);
+  }
+
+  .sheen {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      108deg,
+      rgba(255, 255, 255, 0.0) 18%,
+      rgba(255, 255, 255, 0.42) 40%,
+      rgba(255, 255, 255, 0.0) 54%
+    );
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+  <section class="frame og" id="og">
+    <div class="night"></div>
+    <div class="glow"></div>
+    <div class="horizon"></div>
+    <div class="stage">
+      <div class="rig">
+        <div class="shadow"></div>
+        <div class="card">
+          <div class="face">
+            <div class="wordmark">
+              <span class="en">Athar</span>
+              <span class="ar" lang="ar">أثر</span>
+            </div>
+            <div class="balance">
+              <span class="num">1,284.650</span>
+              <span class="ccy">BHD</span>
+            </div>
+          </div>
+          <div class="sheen"></div>
+        </div>
+      </div>
+    </div>
+    <div class="vignette"></div>
+    <div class="grain"></div>
+  </section>
+
+  <section class="frame banner" id="banner">
+    <div class="night"></div>
+    <div class="glow"></div>
+    <div class="horizon"></div>
+    <div class="stage">
+      <div class="rig">
+        <div class="shadow"></div>
+        <div class="card">
+          <div class="face">
+            <div class="wordmark">
+              <span class="en">Athar</span>
+              <span class="ar" lang="ar">أثر</span>
+            </div>
+            <div class="balance">
+              <span class="num">1,284.650</span>
+              <span class="ccy">BHD</span>
+            </div>
+          </div>
+          <div class="sheen"></div>
+        </div>
+      </div>
+    </div>
+    <div class="vignette"></div>
+    <div class="grain"></div>
+  </section>
+</body>
+</html>

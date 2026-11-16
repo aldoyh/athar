@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Athar",
+      "hasCanvas": false,
+      "bodyTextLen": 7656,
+      "bodyTextHash": "835af22fe495abe485a074c7191d94154bccf7120b2bc708291df472b83aac0c",
+      "bodyTextPrefix": "ATHAR · أثر The prompt Athar is an original design study. Not Be",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Athar",
+      "hasCanvas": false,
+      "bodyTextLen": 709,
+      "bodyTextHash": "1d1ce872e9741cff17ef2749d2e4f1d441b0061b277edf33dee38222c72c07b5",
+      "bodyTextPrefix": "Brief Hold this chip to see the wireframe. Nothing here can move",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}

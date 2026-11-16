@@ -1,0 +1,40 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Athar",
+      "hasCanvas": false,
+      "bodyTextLen": 7728,
+      "bodyTextHash": "e02bd4cedb26d19b1fe5d9e0d8a25ca0ac21effee659dae53885515640959dc4",
+      "bodyTextPrefix": "ATHAR · أثر The prompt Athar is an original design study. Not Be",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Athar",
+      "hasCanvas": false,
+      "bodyTextLen": 795,
+      "bodyTextHash": "34ef328c3e1b60243a55a26edd12b3dc952bc6976f29fd703934ee1a4bd8bec8",
+      "bodyTextPrefix": "Brief Living home. Nothing on this screen can move money. عربي 1",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": true,
+  "baselineReasons": [
+    "mobile: body text changed (709 -> 795 chars, hash mismatch)"
+  ]
+}

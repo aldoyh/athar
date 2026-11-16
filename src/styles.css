@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Tajawal", "Segoe UI", sans-serif;
+  --font-display: "Fraunces", "Iowan Old Style", Palatino, serif;
+  --color-ink: #1b1714;
+  --color-panel: #e4d5c0;
+  --color-pearl: #fbf6ee;
+  --color-mist: #5c554c;
+  --color-brass: #0e3f4c;
+  --color-line: #d3c4ae;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-panel);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brass);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--color-brass);
+    color: var(--color-pearl);
+  }
+}
+
+.pb-safe {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+
+.pt-safe {
+  padding-top: max(0.25rem, env(safe-area-inset-top));
+}
+
+.athar-sheet {
+  max-height: min(40rem, 86dvh);
+}
+
+.metal-card {
+  background-color: var(--color-pearl);
+  color: var(--color-ink);
+  box-shadow: 0 12px 28px color-mix(in oklab, var(--color-brass) 16%, transparent);
+}
+
+.metal-card.is-grained::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    -18deg,
+    transparent 0 3px,
+    color-mix(in oklab, var(--color-ink) 6%, transparent) 3px 4px
+  );
+}
+
+.metal-edge {
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0;
+  bottom: 0;
+  width: 0.25rem;
+  background: var(--color-brass);
+}
+
+.athar-switch {
+  position: relative;
+  width: 3rem;
+  height: 1.75rem;
+  border-radius: 999px;
+  background: var(--color-line);
+}
+
+.athar-switch[data-state="checked"] {
+  background: var(--color-brass);
+}
+
+.athar-switch-thumb {
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 999px;
+  background: var(--color-pearl);
+  transform: translateX(0.25rem);
+  transition: transform 150ms ease-out;
+}
+
+.athar-switch[data-state="checked"] .athar-switch-thumb {
+  transform: translateX(1.5rem);
+}
+
+[dir="rtl"] .athar-switch-thumb {
+  transform: translateX(-0.25rem);
+}
+
+[dir="rtl"] .athar-switch[data-state="checked"] .athar-switch-thumb {
+  transform: translateX(-1.5rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .athar-switch-thumb {
+    transition: none;
+  }
+}
